@@ -1,0 +1,23 @@
+export const modifications = {
+  "Armored Plating*": "+4 AP. Take up to 3×, but can't wear other armor.",
+  "Buzz Saw": "Up-close attack, cuts even metal (d6, crit on 19-20).",
+  "Cloaking Field": "As an action, turn invisible until after your next turn.",
+  Compartment: "+3 inventory slots.",
+  Electromagnet: "Hurl ferrous objects, or call to your hand.",
+  Electroshock: "d6 touch attack. Stuns for 1 round on hit.",
+  Flamethrower: "d6 up close. Empty oil to attack twice, or an area.",
+  "Grappling Hook": "On a retractible line. Can attack (d6), snare on hit.",
+  "Hover Jet": "Levitate a few feet.",
+  "Hydraulic Punch": "d6 punch (2d6 vs. AP), busts through most walls.",
+  "Nail Gun": "d6. Empty clip to deal damage; 1 junk to reload.",
+  Laser:
+    "d6 attack, crit on 19-20, drain laser mod's battery to deal damage again or on a miss.",
+  "Pneumatic Legs": "Jump 3× height.",
+  Radio: "Walkie-talkie, snoop signals, Hacking (with the trick) at range.",
+  "Self-Repair Protocol": "Restore all HP after a few hours in rest mode.",
+  "Sensor Array": "Know temperature, location, shape of anything nearby.",
+  "Shoulder Launcher": "Distant attack (d12 area), 1 missile per shot.",
+  Synthesizer: "Mimic sounds you've heard. Speak in others' voices.",
+  "Telescoping Limbs": "Arms/legs stretch to double length.",
+  Wheels: "Move as fast as a car.",
+};
