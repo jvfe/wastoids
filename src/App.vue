@@ -79,7 +79,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
+  min-height: calc(100vmin - 10px);
 }
 
 #titleContainer {
@@ -97,6 +98,7 @@ export default {
 }
 
 #footer {
+  width: 100%;
   padding: 1em;
 }
 
@@ -104,6 +106,7 @@ export default {
   #app {
     width: 100%;
     padding: 0 0.5em;
+    margin-top: 1em;
   }
 
   #appLogo {

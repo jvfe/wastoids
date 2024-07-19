@@ -18,8 +18,12 @@
             </template>
           </ul>
           <div id="hpAp">
-            <p>HP {{ HP }}/{{ HP }}</p>
-            <p>AP {{ AP }}/{{ AP }}</p>
+            <p>
+              HP <span class="resourceVal">{{ HP }}/{{ HP }}</span>
+            </p>
+            <p>
+              AP <span class="resourceVal">{{ AP }}/{{ AP }}</span>
+            </p>
           </div>
         </section>
         <div id="boxedComps">
@@ -282,10 +286,11 @@ export default {
   grid-gap: 10px;
   grid-template-rows: 0.1fr 2fr;
   /* height: calc(fit-content + 10vh); */
-  min-height: calc(100vh - 10px);
+  /* min-height: calc(100vh - 10px); */
   width: 45vw;
   align-items: space-around;
   justify-items: center;
+  font-size: 16px;
 }
 
 #generatorBtn {
@@ -293,12 +298,14 @@ export default {
   width: 10rem;
   appearance: none;
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  border: 1px solid rgb(255, 255, 255);
+  color: #be4537;
+  border: 1px solid #313d5a;
   border-radius: 0;
   background-color: transparent;
   cursor: pointer;
+  font-weight: bold;
   text-transform: uppercase;
+  transition: 0.4s;
 }
 
 .sectionTitle {
@@ -308,8 +315,13 @@ export default {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.resourceVal {
+  color: #b87168;
+}
+
 #generatorBtn:hover {
-  background-color: #be4537;
+  background-color: #313d5a;
+  color: var(--vt-c-white);
 }
 
 #characterSheet {
@@ -390,10 +402,6 @@ ul {
   margin: 0 1em;
 }
 
-.attrVal {
-  margin: 0 0.25em;
-}
-
 .trickList {
   display: grid;
 }
@@ -436,6 +444,7 @@ ul {
 .attrVal {
   display: flex;
   margin: 0 0.2em;
+  color: #b87168;
 }
 
 .attrsElem {
@@ -451,6 +460,7 @@ ul {
 @media (max-width: 600px) {
   #componentPage {
     width: 100vw;
+    font-size: 14px;
   }
   #characterSheet {
     width: 100%;
