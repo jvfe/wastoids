@@ -6,46 +6,61 @@
     </button>
     <div id="characterSheet">
       <div v-if="generated">
-        <div id="statsSection">
+        <section id="statsSection">
           <ul class="attrs">
             <template v-for="(value, key) in attributes" :key="key">
               <li class="attrsElem" v-if="value != 0">
-                <p><template v-if="value > 0">+</template>{{ value }}</p>
-                <p>{{ key }}</p>
+                <p class="attrName">{{ key }}</p>
+                <p class="attrVal">
+                  <template v-if="value > 0">+</template>{{ value }}
+                </p>
               </li>
             </template>
           </ul>
-          <p>HP {{ HP }}/{{ HP }}</p>
-          <p>AP {{ AP }}</p>
-        </div>
-        <div id="flavorSection">
-          <h1>You are {{ name }}</h1>
-          <p id="quirk">{{ quirk }}</p>
-          <p>Has {{ trinket }}</p>
-          <p>Wears {{ outfit }}</p>
-        </div>
-        <div id="inventorySection">
-          <h2>Gear ({{ inventorySize }} slots)</h2>
-          <ul id="inventoryItems">
-            <li class="item">☣ {{ item }}</li>
-            <li class="item">☣ {{ weapon }}</li>
-          </ul>
-        </div>
-        <div id="trickSection">
-          <h2>Tricks:</h2>
-          <ul class="trickList">
-            <li class="trickElem" v-for="(value, trick) in tricks" :key="trick">
-              <div class="category">
-                <h4 class="trickName">
-                  {{ trick }}
-                  <span v-if="value.length > 1" class="quantity"
-                    >(x{{ value.length }})</span
-                  >
-                </h4>
-                <p class="trickDescription">{{ value[0] }}</p>
-              </div>
-            </li>
-          </ul>
+          <div id="hpAp">
+            <p>HP {{ HP }}/{{ HP }}</p>
+            <p>AP {{ AP }}/{{ AP }}</p>
+          </div>
+        </section>
+        <div id="boxedComps">
+          <section id="flavorSection">
+            <h1 id="charName" class="sectionTitle">You are {{ name }}</h1>
+            <div id="charDetails">
+              <p id="quirk">☣ {{ quirk }}</p>
+              <p>☣ Has {{ trinket }}</p>
+              <p>☣ Wears {{ outfit }}</p>
+            </div>
+          </section>
+          <section id="inventorySection">
+            <h1 class="sectionTitle">
+              Gear
+              <small id="slots">({{ inventorySize }} slots)</small>
+            </h1>
+            <ul id="inventoryItems">
+              <li class="item">☣ {{ item }}</li>
+              <li class="item">☣ {{ weapon }}</li>
+            </ul>
+          </section>
+          <section id="trickSection">
+            <h1 class="sectionTitle">Tricks:</h1>
+            <ul class="trickList">
+              <li
+                class="trickElem"
+                v-for="(value, trick) in tricks"
+                :key="trick"
+              >
+                <div class="category">
+                  <h4 class="trickName">
+                    ☣ {{ trick }}
+                    <span v-if="value.length > 1" class="quantity"
+                      >(x{{ value.length }})</span
+                    >
+                  </h4>
+                  <p class="trickDescription">{{ value[0] }}</p>
+                </div>
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
@@ -265,12 +280,36 @@ export default {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 10px;
-  grid-template-rows: 0.2fr 2fr;
-  height: calc(100vh - 10px);
+  grid-template-rows: 0.1fr 2fr;
+  /* height: calc(fit-content + 10vh); */
+  min-height: calc(100vh - 10px);
+  width: 45vw;
+  align-items: space-around;
+  justify-items: center;
 }
 
 #generatorBtn {
-  height: 2em;
+  height: 3em;
+  width: 10rem;
+  appearance: none;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  text-transform: uppercase;
+  color: #be4537;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#generatorBtn:hover {
+  background-color: #be4537;
 }
 
 #characterSheet {
@@ -282,20 +321,39 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+#boxedComps {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 #inventorySection {
   text-align: left;
+  border-bottom: 1px solid #b75b4f;
+  padding: 1em 1em;
+  flex: 1 0 50%;
 }
 
 #inventoryItems {
   width: fit-content;
+  padding: 0 0.5em;
+}
+
+#slots {
+  font-size: small;
 }
 
 #flavorSection {
   display: grid;
   align-items: center;
   text-align: left;
-  gap: 0.5em;
+  padding: 1em 1em;
+  border-bottom: 1px solid #b75b4f;
+  border-right: 1px solid #b75b4f;
+  flex: 1 0 50%;
+}
+
+#charDetails {
+  padding: 0 0.5em;
 }
 
 #quirk {
@@ -305,6 +363,35 @@ ul {
 #trickSection {
   text-align: left;
   margin-top: 0.5em;
+  padding: 1em 1em;
+  flex: 1 0 100%;
+  border-bottom: 1px solid #b75b4f;
+}
+
+#statsSection {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-top: 1px solid #b75b4f;
+  border-bottom: 1px solid #b75b4f;
+}
+
+#hpAp {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 0.25em;
+  border-left: 1px solid #b75b4f;
+  flex: 1 0 15%;
+}
+
+#hpAp > p {
+  font-weight: bold;
+  margin: 0 1em;
+}
+
+.attrVal {
+  margin: 0 0.25em;
 }
 
 .trickList {
@@ -313,7 +400,7 @@ ul {
 
 .trickElem {
   display: flex;
-  width: 30em;
+  width: 100%;
 }
 
 .category {
@@ -331,6 +418,7 @@ ul {
 
 .trickDescription {
   text-align: left;
+  padding: 0 1.5em;
 }
 
 .quantity {
@@ -341,24 +429,62 @@ ul {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
+  flex: 1 0 60%;
+  flex-wrap: wrap;
 }
 
 .attrVal {
   display: flex;
   margin: 0 0.2em;
 }
+
 .attrsElem {
   display: flex;
   justify-content: space-between;
-  gap: 0.25em;
+  margin: 0.25em;
+}
+
+.attrName {
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {
+  #componentPage {
+    width: 100vw;
+  }
   #characterSheet {
     width: 100%;
   }
+
+  #inventorySection {
+    flex: 1 0 100%;
+  }
+
+  #flavorSection {
+    flex: 1 0 100%;
+    border-right: 0;
+  }
+
+  .trickDescription {
+    padding: 0 1em;
+  }
+
   .trickElem {
     width: 100%;
+  }
+  .attrs {
+    justify-content: center;
+    width: 100%;
+    flex: 1 0 100%;
+  }
+
+  #hpAp {
+    border: 0;
+    padding: 0;
+    width: 100%;
+    padding: 0.2em 0;
+    border-top: 1px solid #b75b4f;
+    justify-content: center;
   }
 }
 </style>
