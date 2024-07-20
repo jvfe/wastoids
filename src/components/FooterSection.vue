@@ -2,15 +2,6 @@
   <div id="footer">
     <p>
       <a
-        href="https://github.com/jvfe/wastoids"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Open source</a
-      >
-      app made by jvfe
-    </p>
-    <p>
-      <a
         href="https://jasontocci.itch.io/wastoid"
         target="_blank"
         rel="noopener noreferrer"
@@ -30,6 +21,15 @@
         rel="noopener noreferrer"
         >Pretendo Games</a
       >
+    </p>
+    <p>
+      <a
+        href="https://github.com/jvfe/wastoids"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Open source</a
+      >
+      app made by jvfe
     </p>
     <p>
       Gas Mask by
