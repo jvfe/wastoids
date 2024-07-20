@@ -1,6 +1,6 @@
 # wastoids
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a simple character generator for the TTRPG [Wastoid](https://jasontocci.itch.io/wastoid) by [Jason Tocci](https://jasontocci.itch.io).
 
 ## Recommended IDE Setup
 
