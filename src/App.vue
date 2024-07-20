@@ -80,7 +80,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 40px;
-  min-height: calc(100vmin - 10px);
 }
 
 #titleContainer {
@@ -89,6 +88,7 @@ export default {
   align-items: center;
   gap: 1em;
   flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 #appTitle {
@@ -100,6 +100,8 @@ export default {
 #footer {
   width: 100%;
   padding: 1em;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 @media (max-width: 600px) {

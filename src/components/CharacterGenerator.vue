@@ -288,6 +288,7 @@ export default {
   flex: 1;
   justify-items: center;
   font-size: 16px;
+  flex-grow: 1;
 }
 
 #generatorBtn {
@@ -323,7 +324,6 @@ export default {
 
 #characterSheet {
   margin-top: 0.5em;
-  max-height: calc(80vh - 10px);
 }
 
 ul {
