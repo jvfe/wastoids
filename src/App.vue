@@ -125,6 +125,18 @@ export default {
   color: var(--vt-c-white);
 }
 
+.sectionTitle {
+  text-transform: uppercase;
+  color: #be4537;
+  font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 @media (max-width: 600px) {
   #app {
     width: 100%;

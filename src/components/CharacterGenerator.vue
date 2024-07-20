@@ -6,66 +6,21 @@
     </button>
     <div id="characterSheet">
       <div v-if="generated">
-        <section id="statsSection">
-          <ul class="attrs">
-            <template v-for="(value, key) in attributes" :key="key">
-              <li class="attrsElem" v-if="value != 0">
-                <p class="attrName">{{ key }}</p>
-                <p class="attrVal">
-                  <template v-if="value > 0">+</template>{{ value }}
-                </p>
-              </li>
-            </template>
-          </ul>
-          <div id="hpAp">
-            <p>
-              HP <span class="resourceVal">{{ HP }}/{{ HP }}</span>
-            </p>
-            <p>
-              AP <span class="resourceVal">{{ AP }}/{{ AP }}</span>
-            </p>
-          </div>
-        </section>
+        <StatsSection :attributes="attributes" :HP="HP" :AP="AP" />
         <div id="boxedComps">
-          <section id="flavorSection">
-            <h1 id="charName" class="sectionTitle">You are {{ name }}</h1>
-            <div id="charDetails">
-              <p id="quirk">☣ {{ quirk }}</p>
-              <p>☣ Has {{ trinket }}</p>
-              <p>☣ Wears {{ outfit }}</p>
-            </div>
-          </section>
-          <section id="inventorySection">
-            <h1 class="sectionTitle">
-              Gear
-              <small id="slots">({{ inventorySize }} slots)</small>
-            </h1>
-            <ul id="inventoryItems">
-              <li class="item">☣ {{ outfit }} (Outfit)</li>
-              <li class="item">☣ {{ item }}</li>
-              <li class="item">☣ {{ weapon }}</li>
-            </ul>
-          </section>
-          <section id="trickSection">
-            <h1 class="sectionTitle">Tricks:</h1>
-            <ul class="trickList">
-              <li
-                class="trickElem"
-                v-for="(value, trick) in tricks"
-                :key="trick"
-              >
-                <div class="category">
-                  <h4 class="trickName">
-                    ☣ {{ trick }}
-                    <span v-if="value.length > 1" class="quantity"
-                      >(x{{ value.length }})</span
-                    >
-                  </h4>
-                  <p class="trickDescription">{{ value[0] }}</p>
-                </div>
-              </li>
-            </ul>
-          </section>
+          <FlavorSection
+            :name="name"
+            :quirk="quirk"
+            :trinket="trinket"
+            :outfit="outfit"
+          />
+          <InventorySection
+            :inventorySize="inventorySize"
+            :outfit="outfit"
+            :item="item"
+            :weapon="weapon"
+          />
+          <TrickSection :tricks="tricks" />
         </div>
       </div>
       <button class="appBtn" id="printBtn" onclick="window.print()">
@@ -76,6 +31,13 @@
 </template>
 
 <script>
+// Components
+import StatsSection from "./SheetSections/Stats.vue";
+import FlavorSection from "./SheetSections/Flavor.vue";
+import InventorySection from "./SheetSections/Inventory.vue";
+import TrickSection from "./SheetSections/Tricks.vue";
+
+// Data
 import { attributes } from "../tables/attributes";
 import { tricks } from "../tables/tricks";
 import { mutations } from "../tables/mutations";
@@ -88,6 +50,12 @@ import { items } from "../tables/items";
 import { names } from "../tables/names";
 
 export default {
+  components: {
+    StatsSection,
+    FlavorSection,
+    InventorySection,
+    TrickSection,
+  },
   data() {
     return {
       name: {},
@@ -298,101 +266,13 @@ export default {
   margin-top: 1.5em;
 }
 
-.sectionTitle {
-  text-transform: uppercase;
-  color: #be4537;
-  font-weight: 500;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.resourceVal {
-  color: #b87168;
-}
-
 #characterSheet {
   margin-top: 0.5em;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
 #boxedComps {
   display: flex;
   flex-wrap: wrap;
-}
-
-#inventorySection {
-  text-align: left;
-  border-bottom: 1px solid #b75b4f;
-  padding: 1em 1em;
-  flex: 1 0 50%;
-}
-
-#inventoryItems {
-  width: fit-content;
-  padding: 0 0.5em;
-}
-
-#slots {
-  font-size: small;
-}
-
-#flavorSection {
-  display: grid;
-  align-items: center;
-  text-align: left;
-  padding: 1em 1em;
-  border-bottom: 1px solid #b75b4f;
-  border-right: 1px solid #b75b4f;
-  flex: 1 0 50%;
-}
-
-#charDetails {
-  padding: 0 0.5em;
-}
-
-#quirk {
-  font-style: italic;
-}
-
-#trickSection {
-  text-align: left;
-  margin-top: 0.5em;
-  padding: 1em 1em;
-  flex: 1 0 100%;
-  border-bottom: 1px solid #b75b4f;
-}
-
-#statsSection {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  border-top: 1px solid #b75b4f;
-  border-bottom: 1px solid #b75b4f;
-}
-
-#hpAp {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-left: 0.25em;
-  border-left: 1px solid #b75b4f;
-  flex: 1 0 15%;
-}
-
-#hpAp > p {
-  font-weight: bold;
-  margin: 0 1em;
-}
-
-.trickList {
-  display: grid;
-}
-
-.trickElem {
-  display: flex;
-  width: 100%;
 }
 
 .category {
@@ -404,81 +284,14 @@ ul {
   grid-template-columns: 1fr auto;
 }
 
-.trickName {
-  font-weight: bold;
-}
-
-.trickDescription {
-  text-align: left;
-  padding: 0 1.5em;
-}
-
-.quantity {
-  font-style: italic;
-}
-
-.attrs {
-  display: flex;
-  justify-content: space-around;
-  align-items: stretch;
-  flex: 1 0 60%;
-  flex-wrap: wrap;
-}
-
-.attrVal {
-  display: flex;
-  margin: 0 0.2em;
-  color: #b87168;
-}
-
-.attrsElem {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.25em;
-}
-
-.attrName {
-  font-weight: bold;
-}
-
 @media (max-width: 600px) {
   #componentPage {
     width: 100vw;
     font-size: 14px;
   }
+
   #characterSheet {
     width: 100%;
-  }
-
-  #inventorySection {
-    flex: 1 0 100%;
-  }
-
-  #flavorSection {
-    flex: 1 0 100%;
-    border-right: 0;
-  }
-
-  .trickDescription {
-    padding: 0 1em;
-  }
-
-  .trickElem {
-    width: 100%;
-  }
-  .attrs {
-    justify-content: center;
-    width: 100%;
-    flex: 1 0 100%;
-  }
-
-  #hpAp {
-    border: 0;
-    padding: 0;
-    width: 100%;
-    padding: 0.2em 0;
-    border-top: 1px solid #b75b4f;
-    justify-content: center;
   }
 }
 
