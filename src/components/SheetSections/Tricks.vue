@@ -4,7 +4,7 @@
     <ul class="trickList">
       <li class="trickElem" v-for="(value, trick) in tricks" :key="trick">
         <div class="category">
-          <h4 class="trick">
+          <h4 class="trickName">
             ☣ {{ trick }}
             <span v-if="value.length > 1" class="quantity"
               >(x{{ value.length }})</span
@@ -58,6 +58,15 @@ export default {
 
 .quantity {
   font-style: italic;
+}
+
+.category {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: auto auto;
+  text-align: left;
+  margin: 0.5em 0.2em;
+  grid-template-columns: 1fr auto;
 }
 
 @media (max-width: 600px) {

@@ -275,15 +275,6 @@ export default {
   flex-wrap: wrap;
 }
 
-.category {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: auto auto;
-  text-align: left;
-  margin: 0.5em 0.2em;
-  grid-template-columns: 1fr auto;
-}
-
 @media (max-width: 600px) {
   #componentPage {
     width: 100vw;
