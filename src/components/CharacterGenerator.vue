@@ -41,6 +41,7 @@
               <small id="slots">({{ inventorySize }} slots)</small>
             </h1>
             <ul id="inventoryItems">
+              <li class="item">☣ {{ outfit }}</li>
               <li class="item">☣ {{ item }}</li>
               <li class="item">☣ {{ weapon }}</li>
             </ul>
@@ -150,10 +151,7 @@ export default {
 
       // Calculate HP
       // If grit is picked then base is tough + 10
-      this.HP =
-        this.calculateHP(trickList) > 0
-          ? this.attributes["Toughness"] + 10 + this.calculateHP(trickList)
-          : this.attributes["Toughness"] + 5;
+      this.HP = this.attributes["Toughness"] + 5 + this.calculateHP(trickList);
 
       // Set flavour info and items
       this.name = this.getRandomElement(names);
@@ -228,7 +226,7 @@ export default {
     calculateHP(trickList) {
       let hp = 0;
       const hp_modifiers = {
-        "Grit*": 4,
+        "Grit*": 5,
       };
       trickList.forEach((trick) => {
         if (hp_modifiers.hasOwnProperty(trick)) {
@@ -243,11 +241,12 @@ export default {
         "Natural Armor - Subtle Hide/Scales (Mutation)": 4,
         "Natural Armor - Thick Shell (Mutation)": 8,
         "Armored Plating* (Modification)": 4,
+        "Thick Skin": 3,
       };
       Object.keys(tricks).forEach((trick) => {
         if (ap_modifiers.hasOwnProperty(trick)) {
-          // Subtle Hide stacks with other armor
-          if (trick.includes("Subtle Hide")) {
+          // Thick Skin stacks with other armor
+          if (trick.includes("Thick Skin")) {
             ap = outfit.includes("Biker")
               ? ap_modifiers[trick] + 4
               : ap_modifiers[trick];
@@ -285,10 +284,8 @@ export default {
   grid-auto-flow: column;
   grid-gap: 10px;
   grid-template-rows: 0.1fr 2fr;
-  /* height: calc(fit-content + 10vh); */
-  /* min-height: calc(100vh - 10px); */
   width: 45vw;
-  align-items: space-around;
+  flex: 1;
   justify-items: center;
   font-size: 16px;
 }
