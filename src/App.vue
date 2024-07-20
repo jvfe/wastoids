@@ -1,61 +1,15 @@
 <script setup>
+import TitleSection from "./components/TitleSection.vue";
 import CharacterGenerator from "./components/CharacterGenerator.vue";
+import FooterSection from "./components/FooterSection.vue";
 </script>
 
 <!-- src/App.vue -->
 <template>
   <div id="app">
-    <div id="titleContainer">
-      <img
-        src="./assets/GasMask_by_MugenB16.png"
-        alt="Gas Mask Icon"
-        id="appLogo"
-      />
-      <h1 id="appTitle">WASTOIDS!</h1>
-    </div>
+    <TitleSection />
     <CharacterGenerator />
-    <div id="footer">
-      <p>
-        <a
-          href="https://github.com/jvfe/wastoids"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Open source</a
-        >
-        app made by jvfe
-      </p>
-      <p>
-        <a
-          href="https://jasontocci.itch.io/wastoid"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Wastoid</a
-        >
-        by
-        <a
-          href="https://jasontocci.itch.io/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Jason Tocci</a
-        >
-        @
-        <a
-          href="https://pretendo.games/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Pretendo Games</a
-        >
-      </p>
-      <p>
-        Gas Mask by
-        <a
-          href="https://www.iconarchive.com/show/the-attic-icons-by-mugenB16/Gas-Mask-icon.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          >MugenB16
-        </a>
-      </p>
-    </div>
+    <FooterSection />
   </div>
 </template>
 
@@ -63,7 +17,9 @@ import CharacterGenerator from "./components/CharacterGenerator.vue";
 export default {
   name: "App",
   components: {
+    TitleSection,
     CharacterGenerator,
+    FooterSection,
   },
 };
 </script>
@@ -81,28 +37,6 @@ export default {
   text-align: center;
   margin-top: 40px;
   min-height: calc(100vmin - 10px);
-}
-
-#titleContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  flex-wrap: wrap;
-  flex-shrink: 0;
-}
-
-#appTitle {
-  font-size: xx-large;
-  font-weight: bolder;
-  color: #be4537;
-}
-
-#footer {
-  width: 100%;
-  padding: 1em;
-  margin-top: auto;
-  flex-shrink: 0;
 }
 
 .appBtn {
@@ -142,10 +76,6 @@ ul {
     width: 100%;
     padding: 0 0.5em;
     margin-top: 1em;
-  }
-
-  #appLogo {
-    width: 20%;
   }
 }
 
