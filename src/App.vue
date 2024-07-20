@@ -80,6 +80,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 40px;
+  min-height: calc(100vmin - 10px);
 }
 
 #titleContainer {

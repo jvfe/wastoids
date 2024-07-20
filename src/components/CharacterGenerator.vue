@@ -494,4 +494,11 @@ ul {
     justify-content: center;
   }
 }
+
+/* Media query for tablets */
+@media (min-width: 600px) and (max-width: 1024px) {
+  #componentPage {
+    width: 80vw;
+  }
+}
 </style>
