@@ -1,7 +1,7 @@
 <!-- src/components/CharacterGenerator.vue -->
 <template>
   <div id="componentPage">
-    <button @click="generateCharacter" id="generatorBtn">
+    <button @click="generateCharacter" id="generatorBtn" class="appBtn">
       Get me a new one!
     </button>
     <div id="characterSheet">
@@ -68,6 +68,9 @@
           </section>
         </div>
       </div>
+      <button class="appBtn" id="printBtn" onclick="window.print()">
+        Print this one
+      </button>
     </div>
   </div>
 </template>
@@ -291,19 +294,8 @@ export default {
   flex-grow: 1;
 }
 
-#generatorBtn {
-  height: 3em;
-  width: 10rem;
-  appearance: none;
-  text-decoration: none;
-  color: #be4537;
-  border: 1px solid #313d5a;
-  border-radius: 0;
-  background-color: transparent;
-  cursor: pointer;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: 0.4s;
+#printBtn {
+  margin-top: 1.5em;
 }
 
 .sectionTitle {
@@ -315,11 +307,6 @@ export default {
 
 .resourceVal {
   color: #b87168;
-}
-
-#generatorBtn:hover {
-  background-color: #313d5a;
-  color: var(--vt-c-white);
 }
 
 #characterSheet {

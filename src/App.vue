@@ -105,6 +105,26 @@ export default {
   flex-shrink: 0;
 }
 
+.appBtn {
+  height: 3em;
+  width: 10rem;
+  appearance: none;
+  text-decoration: none;
+  color: #be4537;
+  border: 1px solid #313d5a;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+.appBtn:hover {
+  background-color: #313d5a;
+  color: var(--vt-c-white);
+}
+
 @media (max-width: 600px) {
   #app {
     width: 100%;
@@ -114,6 +134,14 @@ export default {
 
   #appLogo {
     width: 20%;
+  }
+}
+
+@media print {
+  #appLogo,
+  .appBtn,
+  #footer {
+    display: none;
   }
 }
 </style>
