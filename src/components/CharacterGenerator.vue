@@ -41,7 +41,7 @@
               <small id="slots">({{ inventorySize }} slots)</small>
             </h1>
             <ul id="inventoryItems">
-              <li class="item">☣ {{ outfit }}</li>
+              <li class="item">☣ {{ outfit }} (Outfit)</li>
               <li class="item">☣ {{ item }}</li>
               <li class="item">☣ {{ weapon }}</li>
             </ul>
