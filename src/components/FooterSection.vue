@@ -29,7 +29,13 @@
         rel="noopener noreferrer"
         >Open source</a
       >
-      app made by jvfe
+      app made by
+      <a
+        href="https://github.com/jvfe"
+        target="_blank"
+        rel="noopener noreferrer"
+        >jvfe</a
+      >
     </p>
     <p>
       Gas Mask by
